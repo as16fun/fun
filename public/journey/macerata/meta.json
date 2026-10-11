@@ -1,0 +1,82 @@
+{
+  "name": "Macerata, IT — Accademia di Belle Arti",
+  "origin": [
+    13.4512,
+    43.3006
+  ],
+  "focus": [
+    13.450895,
+    43.301029
+  ],
+  "projection": {
+    "type": "equirectangular (build-time only)",
+    "note": "Files are WGS84 (lon, lat). Local metres x = (lon - lon0) * kx, y = (lat - lat0) * ky are used for build-time maths.",
+    "radius": 6378137,
+    "kx": 81014.49330872999,
+    "ky": 111319.49079327357
+  },
+  "core": {
+    "halfSize": 280,
+    "bounds": [
+      13.4477438,
+      43.2980847,
+      13.4546562,
+      43.3031153
+    ]
+  },
+  "fade": {
+    "start": 300,
+    "end": 455,
+    "norm": "superellipse p=4"
+  },
+  "bounds": [
+    13.4453986,
+    43.2963779,
+    13.4570014,
+    43.3048221
+  ],
+  "sun": {
+    "azimuth": 210,
+    "elevation": 48
+  },
+  "lighting": {
+    "image": "lighting.png",
+    "size": 2048,
+    "coordinates": [
+      [
+        13.4453986,
+        43.3048221
+      ],
+      [
+        13.4570014,
+        43.3048221
+      ],
+      [
+        13.4570014,
+        43.2963779
+      ],
+      [
+        13.4453986,
+        43.2963779
+      ]
+    ]
+  },
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL 1.0 — https://opendatacommons.org/licenses/odbl/",
+  "source": "OpenStreetMap via the Overpass API",
+  "osmBase": "2026-10-09T15:34:41Z",
+  "generatedAt": "2026-10-09T15:37:12.285Z",
+  "heightSources": {
+    "height": 14,
+    "levels": 160,
+    "estimate": 598
+  },
+  "counts": {
+    "buildings": 772,
+    "roads": 935,
+    "rail": 0,
+    "water": 6,
+    "green": 146,
+    "trees": 1010
+  }
+}

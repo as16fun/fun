@@ -1,0 +1,1575 @@
+{
+  "$schema": "./story.schema.json",
+  "story": {
+    "id": "eindhoven-evening-demonstration",
+    "title": "Evening demonstration in the city centre",
+    "standfirst": "A fictional march for safer night cycling in Eindhoven, from the Markt to the Stadhuis.",
+    "byline": "Storyline Demo Desk",
+    "date": "2026-09-25",
+    "timezone": "Europe/Amsterdam",
+    "start": "18:00",
+    "end": "23:00",
+    "place": "Central Eindhoven",
+    "fictional": true,
+    "disclaimer": "Fictional demo scenario. The demonstration, times, crowd figures, quotes, people and sources are all invented. Only the street names and the map are real."
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Gathering on the Markt",
+      "start": "18:00",
+      "summary": "People with bike lights and paper lanterns gather on the Markt. Organisers speak from a small stage at the north end of the square.",
+      "camera": {
+        "target": [
+          5.47852,
+          51.43935
+        ],
+        "zoom": 2.15
+      }
+    },
+    {
+      "id": "c2",
+      "title": "The march sets off",
+      "start": "19:10",
+      "summary": "The crowd leaves the Markt heading north along Demer and loops across 18 Septemberplein, then down the Vestdijk.",
+      "camera": {
+        "target": [
+          5.4795,
+          51.4404
+        ],
+        "zoom": 1.55
+      }
+    },
+    {
+      "id": "c3",
+      "title": "Through Stratumseind",
+      "start": "19:45",
+      "summary": "Via Ten Hagestraat the march reaches Catharinaplein in front of the church, then heads down Stratumseind towards the Stadhuis.",
+      "camera": {
+        "target": [
+          5.4811,
+          51.4368
+        ],
+        "zoom": 1.7
+      }
+    },
+    {
+      "id": "c4",
+      "title": "Closures and diversions",
+      "start": "20:10",
+      "summary": "As the march nears the Stadhuis, the Wal is closed to traffic and buses are diverted along the Vestdijk and Geldropseweg.",
+      "camera": {
+        "target": [
+          5.482,
+          51.4362
+        ],
+        "zoom": 1.12
+      }
+    },
+    {
+      "id": "c5",
+      "title": "At the Stadhuis",
+      "start": "20:30",
+      "summary": "The crowd builds up outside the Stadhuis. Organisers and the municipality give very different estimates of its size.",
+      "camera": {
+        "target": [
+          5.4803,
+          51.43545
+        ],
+        "zoom": 2
+      }
+    },
+    {
+      "id": "c6",
+      "title": "Dispersal and reopening",
+      "start": "21:45",
+      "summary": "Organisers close the event. People leave in several directions, the Wal reopens and buses return to their normal routes.",
+      "camera": {
+        "target": [
+          5.4802,
+          51.4356
+        ],
+        "zoom": 1.35
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "s-reporter",
+      "name": "Storyline reporter on scene",
+      "type": "reporter",
+      "reliability": "high",
+      "note": "First-hand observation, time-stamped. The reporter is fictional."
+    },
+    {
+      "id": "s-photo",
+      "name": "Storyline photo desk",
+      "type": "photo",
+      "reliability": "high",
+      "note": "Geolocated, time-stamped photos. Used for the crowd counts."
+    },
+    {
+      "id": "s-traffic",
+      "name": "Municipal traffic feed",
+      "type": "data",
+      "reliability": "high",
+      "note": "Automated road-status feed. Simulated for this demo."
+    },
+    {
+      "id": "s-bus",
+      "name": "Bus operator service notice",
+      "type": "official",
+      "reliability": "medium",
+      "note": "Notices can lag what happens on the street by several minutes. Simulated."
+    },
+    {
+      "id": "s-organisers",
+      "name": "Organisers’ statements",
+      "type": "organiser",
+      "reliability": "medium",
+      "note": "An involved party. Their crowd figures are not independently checked. The collective is fictional."
+    },
+    {
+      "id": "s-livestream",
+      "name": "Organisers’ livestream",
+      "type": "video",
+      "reliability": "medium",
+      "note": "Shows mostly the front of the march, so the framing is selective. Fictional."
+    },
+    {
+      "id": "s-municipality",
+      "name": "Municipality press office",
+      "type": "official",
+      "reliability": "medium",
+      "note": "Official estimate. The counting method was not published. Fictional statement."
+    },
+    {
+      "id": "s-firstaid",
+      "name": "First-aid volunteers",
+      "type": "organisation",
+      "reliability": "high",
+      "note": "Volunteer first-aid team at the event. Fictional."
+    },
+    {
+      "id": "s-eyewitness",
+      "name": "Eyewitness (resident)",
+      "type": "eyewitness",
+      "reliability": "medium",
+      "note": "A single account by phone, not yet corroborated. Fictional person."
+    },
+    {
+      "id": "s-social",
+      "name": "Social media posts",
+      "type": "social",
+      "reliability": "low",
+      "note": "Unverified posts. Their original time and place could not be established."
+    }
+  ],
+  "events": [
+    {
+      "id": "e1",
+      "time": {
+        "start": "18:05",
+        "end": "19:45"
+      },
+      "title": "Crowd gathers on the Markt",
+      "summary": "People carrying bike lights and paper lanterns arrive on the Markt in small groups. By just after seven the square is close to full.",
+      "type": "gathering",
+      "place": "Markt",
+      "location": {
+        "type": "area",
+        "coordinates": [
+          [
+            5.479004,
+            51.438961
+          ],
+          [
+            5.478536,
+            51.439834
+          ],
+          [
+            5.478222,
+            51.439769
+          ],
+          [
+            5.478161,
+            51.439513
+          ],
+          [
+            5.478311,
+            51.439205
+          ],
+          [
+            5.478525,
+            51.438862
+          ],
+          [
+            5.479004,
+            51.438961
+          ]
+        ]
+      },
+      "crowd": {
+        "estimate": 1400,
+        "low": 1000,
+        "high": 1900,
+        "series": [
+          {
+            "time": "18:05",
+            "estimate": 60,
+            "low": 40,
+            "high": 90
+          },
+          {
+            "time": "18:25",
+            "estimate": 400,
+            "low": 300,
+            "high": 550
+          },
+          {
+            "time": "18:45",
+            "estimate": 1100,
+            "low": 800,
+            "high": 1500
+          },
+          {
+            "time": "19:05",
+            "estimate": 1400,
+            "low": 1000,
+            "high": 1900
+          },
+          {
+            "time": "19:15",
+            "estimate": 1200,
+            "low": 900,
+            "high": 1600
+          },
+          {
+            "time": "19:30",
+            "estimate": 250,
+            "low": 150,
+            "high": 400
+          },
+          {
+            "time": "19:45",
+            "estimate": 0,
+            "low": 0,
+            "high": 0
+          }
+        ]
+      },
+      "confidence": "confirmed",
+      "confidenceNote": "Seen by our reporter. Numbers come from geolocated photos taken at 18:45 and 19:05.",
+      "sources": [
+        {
+          "source": "s-reporter",
+          "timestamp": "18:07",
+          "detail": "First groups arrive at the north side of the square.",
+          "link": "https://example.com/placeholder/reporter-1807"
+        },
+        {
+          "source": "s-photo",
+          "timestamp": "19:05",
+          "detail": "Overhead photo used for the crowd count.",
+          "link": "https://example.com/placeholder/photo-1905"
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "time": "18:40",
+      "title": "Organisers address the crowd",
+      "summary": "From a small stage at the north end of the square, a speaker for the organisers calls for better-lit cycle routes through the centre.",
+      "type": "statement",
+      "place": "Markt, north side",
+      "location": {
+        "type": "point",
+        "coordinates": [
+          5.478386,
+          51.439774
+        ]
+      },
+      "quote": {
+        "text": "We just want to get home safely after dark.",
+        "attribution": "Speaker for the organisers (invented quote)"
+      },
+      "confidence": "confirmed",
+      "confidenceNote": "Recorded by our reporter. The wording matches the organisers’ livestream.",
+      "sources": [
+        {
+          "source": "s-reporter",
+          "timestamp": "18:41",
+          "detail": "Audio recording of the speech.",
+          "link": "https://example.com/placeholder/reporter-1841"
+        },
+        {
+          "source": "s-livestream",
+          "timestamp": "18:40",
+          "detail": "Livestream segment of the speech.",
+          "link": "https://example.com/placeholder/livestream-1840"
+        }
+      ]
+    },
+    {
+      "id": "e3",
+      "time": {
+        "start": "19:12",
+        "end": "19:47"
+      },
+      "title": "March sets off towards 18 Septemberplein",
+      "summary": "The crowd leaves the Markt heading north along Demer, then loops across 18 Septemberplein, past the Blob, and turns down the Vestdijk.",
+      "type": "movement",
+      "place": "Demer → 18 Septemberplein → Vestdijk",
+      "location": {
+        "type": "path",
+        "snap": "streets",
+        "anchor": [
+          5.47715,
+          51.4402
+        ],
+        "via": [
+          [
+            5.478386,
+            51.439774
+          ],
+          [
+            5.4775,
+            51.43932
+          ],
+          [
+            5.47715,
+            51.4402
+          ],
+          [
+            5.47681,
+            51.44108
+          ],
+          [
+            5.47687,
+            51.44137
+          ],
+          [
+            5.47791,
+            51.44151
+          ],
+          [
+            5.47842,
+            51.44105
+          ],
+          [
+            5.48235,
+            51.43814
+          ]
+        ],
+        "coordinates": [
+          [
+            5.478482,
+            51.439823
+          ],
+          [
+            5.477929,
+            51.439534
+          ],
+          [
+            5.477495,
+            51.439318
+          ],
+          [
+            5.47743,
+            51.43939
+          ],
+          [
+            5.47729,
+            51.4396
+          ],
+          [
+            5.47715,
+            51.43999
+          ],
+          [
+            5.476811,
+            51.44108
+          ],
+          [
+            5.47687,
+            51.441373
+          ],
+          [
+            5.477913,
+            51.44151
+          ],
+          [
+            5.478065,
+            51.441381
+          ],
+          [
+            5.478154,
+            51.441319
+          ],
+          [
+            5.478285,
+            51.441196
+          ],
+          [
+            5.478425,
+            51.441048
+          ],
+          [
+            5.47832,
+            51.441159
+          ],
+          [
+            5.478458,
+            51.441208
+          ],
+          [
+            5.478522,
+            51.441159
+          ],
+          [
+            5.478617,
+            51.441124
+          ],
+          [
+            5.479222,
+            51.440846
+          ],
+          [
+            5.480148,
+            51.440409
+          ],
+          [
+            5.480243,
+            51.440358
+          ],
+          [
+            5.480405,
+            51.44025
+          ],
+          [
+            5.480549,
+            51.440116
+          ],
+          [
+            5.481213,
+            51.43934
+          ],
+          [
+            5.482244,
+            51.438223
+          ],
+          [
+            5.482354,
+            51.438138
+          ]
+        ]
+      },
+      "crowd": {
+        "estimate": 1300,
+        "low": 1000,
+        "high": 1800
+      },
+      "confidence": "confirmed",
+      "confidenceNote": "Our reporter walked the route. Photos on 18 Septemberplein and the Vestdijk confirm the timing.",
+      "sources": [
+        {
+          "source": "s-reporter",
+          "timestamp": "19:12",
+          "detail": "Front of the march leaves the Markt.",
+          "link": "https://example.com/placeholder/reporter-1912"
+        },
+        {
+          "source": "s-photo",
+          "timestamp": "19:31",
+          "detail": "Photo on 18 Septemberplein.",
+          "link": "https://example.com/placeholder/photo-1931"
+        },
+        {
+          "source": "s-livestream",
+          "timestamp": "19:15",
+          "detail": "Livestream from the front banner.",
+          "link": "https://example.com/placeholder/livestream-1915"
+        }
+      ]
+    },
+    {
+      "id": "e4",
+      "time": "19:31",
+      "title": "Marcher helped by first-aiders",
+      "summary": "A marcher who felt unwell is looked after by volunteer first-aiders in the doorway of a shop on 18 Septemberplein. No hospital transfer was needed, the volunteers said.",
+      "type": "incident",
+      "place": "18 Septemberplein, east side",
+      "location": {
+        "type": "point",
+        "coordinates": [
+          5.4779,
+          51.44122
+        ]
+      },
+      "buildingId": "w271592550",
+      "confidence": "confirmed",
+      "confidenceNote": "Confirmed by the first-aid team and seen by our reporter. We do not name the person involved.",
+      "sources": [
+        {
+          "source": "s-firstaid",
+          "timestamp": "19:40",
+          "detail": "Statement from the volunteer team.",
+          "link": "https://example.com/placeholder/firstaid-1940"
+        },
+        {
+          "source": "s-reporter",
+          "timestamp": "19:33",
+          "detail": "Reporter saw first-aiders at work.",
+          "link": "https://example.com/placeholder/reporter-1933"
+        }
+      ]
+    },
+    {
+      "id": "e5",
+      "time": {
+        "start": "19:47",
+        "end": "20:18"
+      },
+      "title": "March turns into Stratumseind",
+      "summary": "Via Ten Hagestraat the march reaches Catharinaplein in front of the Sint-Catharinakerk, then heads down Stratumseind, past the bars, and along Oude Stadsgracht to the Stadhuis.",
+      "type": "movement",
+      "place": "Ten Hagestraat → Stratumseind → Stadhuisplein",
+      "location": {
+        "type": "path",
+        "snap": "streets",
+        "anchor": [
+          5.4815,
+          51.43648
+        ],
+        "via": [
+          [
+            5.48235,
+            51.43814
+          ],
+          [
+            5.48139,
+            51.43799
+          ],
+          [
+            5.48021,
+            51.43775
+          ],
+          [
+            5.47963,
+            51.43739
+          ],
+          [
+            5.48036,
+            51.4369
+          ],
+          [
+            5.48268,
+            51.43602
+          ],
+          [
+            5.48165,
+            51.4356
+          ],
+          [
+            5.48119,
+            51.43541
+          ],
+          [
+            5.48043,
+            51.43543
+          ]
+        ],
+        "coordinates": [
+          [
+            5.482354,
+            51.438138
+          ],
+          [
+            5.482216,
+            51.438124
+          ],
+          [
+            5.482025,
+            51.438096
+          ],
+          [
+            5.481393,
+            51.437993
+          ],
+          [
+            5.481075,
+            51.437947
+          ],
+          [
+            5.480215,
+            51.437748
+          ],
+          [
+            5.479626,
+            51.437387
+          ],
+          [
+            5.4799,
+            51.437192
+          ],
+          [
+            5.48036,
+            51.436898
+          ],
+          [
+            5.480443,
+            51.436863
+          ],
+          [
+            5.481592,
+            51.436451
+          ],
+          [
+            5.482572,
+            51.436138
+          ],
+          [
+            5.482684,
+            51.436023
+          ],
+          [
+            5.4822,
+            51.43583
+          ],
+          [
+            5.48119,
+            51.435414
+          ],
+          [
+            5.48103,
+            51.435552
+          ],
+          [
+            5.480455,
+            51.435297
+          ]
+        ]
+      },
+      "crowd": {
+        "estimate": 1100,
+        "low": 800,
+        "high": 1500
+      },
+      "confidence": "reported",
+      "confidenceNote": "Our reporter lost sight of the front of the march at Ten Hagestraat. This part of the route is based on the livestream and one eyewitness.",
+      "sources": [
+        {
+          "source": "s-livestream",
+          "timestamp": "19:52",
+          "detail": "Front of the march on Ten Hagestraat.",
+          "link": "https://example.com/placeholder/livestream-1952"
+        },
+        {
+          "source": "s-eyewitness",
+          "timestamp": "20:02",
+          "detail": "Resident on Stratumseind, by phone.",
+          "link": "https://example.com/placeholder/eyewitness-2002"
+        }
+      ]
+    },
+    {
+      "id": "e6",
+      "time": {
+        "start": "20:12",
+        "end": "22:40"
+      },
+      "title": "Wal closed to traffic",
+      "summary": "Barriers go up at both ends of the Wal, between Kerkstraat and the Stadhuisplein, as the march arrives. Several shops along the street close early.",
+      "type": "closure",
+      "place": "Wal",
+      "location": {
+        "type": "path",
+        "snap": "bus",
+        "width": 15,
+        "anchor": [
+          5.479,
+          51.43582
+        ],
+        "via": [
+          [
+            5.47805,
+            51.43654
+          ],
+          [
+            5.47863,
+            51.43609
+          ],
+          [
+            5.4794,
+            51.43547
+          ]
+        ],
+        "coordinates": [
+          [
+            5.478056,
+            51.436533
+          ],
+          [
+            5.478634,
+            51.436094
+          ],
+          [
+            5.479192,
+            51.435646
+          ],
+          [
+            5.479417,
+            51.435446
+          ]
+        ]
+      },
+      "buildingIds": [
+        "w271574112",
+        "w271465217"
+      ],
+      "confidence": "confirmed",
+      "confidenceNote": "Listed in the municipal traffic feed and seen by our reporter at the Stadhuisplein end.",
+      "sources": [
+        {
+          "source": "s-traffic",
+          "timestamp": "20:12",
+          "detail": "Status change: Wal closed.",
+          "link": "https://example.com/placeholder/traffic-2012"
+        },
+        {
+          "source": "s-reporter",
+          "timestamp": "20:16",
+          "detail": "Barriers in place at the Stadhuisplein end.",
+          "link": "https://example.com/placeholder/reporter-2016"
+        }
+      ]
+    },
+    {
+      "id": "e7",
+      "time": {
+        "start": "20:20",
+        "end": "22:50"
+      },
+      "title": "Buses diverted via the Vestdijk",
+      "summary": "Buses that normally run along the Wal are sent along the Vestdijk, Geldropseweg and Bilderdijklaan instead, with delays of up to 15 minutes.",
+      "type": "transport",
+      "place": "Vestdijk → Geldropseweg → Bilderdijklaan",
+      "location": {
+        "type": "path",
+        "snap": "bus",
+        "anchor": [
+          5.48282,
+          51.43753
+        ],
+        "via": [
+          [
+            5.47842,
+            51.44143
+          ],
+          [
+            5.48235,
+            51.43814
+          ],
+          [
+            5.48489,
+            51.43625
+          ],
+          [
+            5.48611,
+            51.43463
+          ],
+          [
+            5.48373,
+            51.43437
+          ],
+          [
+            5.48161,
+            51.43373
+          ]
+        ],
+        "coordinates": [
+          [
+            5.478418,
+            51.441433
+          ],
+          [
+            5.478446,
+            51.441396
+          ],
+          [
+            5.478513,
+            51.441272
+          ],
+          [
+            5.478617,
+            51.441124
+          ],
+          [
+            5.480148,
+            51.440409
+          ],
+          [
+            5.480243,
+            51.440358
+          ],
+          [
+            5.480405,
+            51.44025
+          ],
+          [
+            5.480549,
+            51.440116
+          ],
+          [
+            5.481213,
+            51.43934
+          ],
+          [
+            5.481525,
+            51.439007
+          ],
+          [
+            5.481757,
+            51.438746
+          ],
+          [
+            5.482244,
+            51.438223
+          ],
+          [
+            5.482354,
+            51.438138
+          ],
+          [
+            5.482445,
+            51.438053
+          ],
+          [
+            5.48266,
+            51.437714
+          ],
+          [
+            5.482818,
+            51.437529
+          ],
+          [
+            5.48299,
+            51.437355
+          ],
+          [
+            5.483184,
+            51.437195
+          ],
+          [
+            5.483281,
+            51.437122
+          ],
+          [
+            5.483401,
+            51.437041
+          ],
+          [
+            5.483688,
+            51.43687
+          ],
+          [
+            5.483996,
+            51.436704
+          ],
+          [
+            5.48489,
+            51.436253
+          ],
+          [
+            5.484935,
+            51.436209
+          ],
+          [
+            5.48508,
+            51.436135
+          ],
+          [
+            5.485151,
+            51.436121
+          ],
+          [
+            5.48532,
+            51.436019
+          ],
+          [
+            5.485545,
+            51.435842
+          ],
+          [
+            5.485718,
+            51.43569
+          ],
+          [
+            5.485807,
+            51.435602
+          ],
+          [
+            5.485871,
+            51.435533
+          ],
+          [
+            5.485952,
+            51.435427
+          ],
+          [
+            5.486062,
+            51.43523
+          ],
+          [
+            5.486086,
+            51.435169
+          ],
+          [
+            5.486127,
+            51.435004
+          ],
+          [
+            5.486133,
+            51.434794
+          ],
+          [
+            5.486106,
+            51.434628
+          ],
+          [
+            5.485964,
+            51.434636
+          ],
+          [
+            5.485786,
+            51.434638
+          ],
+          [
+            5.485655,
+            51.434665
+          ],
+          [
+            5.484867,
+            51.43465
+          ],
+          [
+            5.484685,
+            51.434616
+          ],
+          [
+            5.484203,
+            51.434506
+          ],
+          [
+            5.483732,
+            51.43437
+          ],
+          [
+            5.483615,
+            51.434342
+          ],
+          [
+            5.481982,
+            51.434005
+          ],
+          [
+            5.481632,
+            51.433868
+          ],
+          [
+            5.481604,
+            51.433807
+          ],
+          [
+            5.481606,
+            51.433732
+          ]
+        ]
+      },
+      "confidence": "reported",
+      "confidenceNote": "Based on the operator’s service notice. We have not checked the delay figures independently.",
+      "sources": [
+        {
+          "source": "s-bus",
+          "timestamp": "20:24",
+          "detail": "Service notice: diversion via the Vestdijk.",
+          "link": "https://example.com/placeholder/bus-2024"
+        }
+      ]
+    },
+    {
+      "id": "e8",
+      "time": {
+        "start": "20:18",
+        "end": "22:25"
+      },
+      "title": "Crowd builds outside the Stadhuis",
+      "summary": "The march fills the Stadhuisplein in front of City Hall. Organisers and the municipality give very different crowd figures.",
+      "type": "gathering",
+      "place": "Stadhuisplein",
+      "location": {
+        "type": "area",
+        "fromOsm": "w42488398",
+        "coordinates": [
+          [
+            5.479958,
+            51.435083
+          ],
+          [
+            5.480044,
+            51.435119
+          ],
+          [
+            5.480098,
+            51.435067
+          ],
+          [
+            5.480731,
+            51.435344
+          ],
+          [
+            5.48069,
+            51.435378
+          ],
+          [
+            5.480909,
+            51.435479
+          ],
+          [
+            5.480848,
+            51.435536
+          ],
+          [
+            5.480718,
+            51.43548
+          ],
+          [
+            5.480457,
+            51.435716
+          ],
+          [
+            5.480544,
+            51.435751
+          ],
+          [
+            5.480453,
+            51.435834
+          ],
+          [
+            5.479568,
+            51.435479
+          ],
+          [
+            5.479958,
+            51.435083
+          ]
+        ]
+      },
+      "buildingId": "w271573917",
+      "crowd": {
+        "estimate": 2100,
+        "low": 1500,
+        "high": 3000,
+        "claims": [
+          {
+            "source": "s-organisers",
+            "estimate": 5000,
+            "timestamp": "21:05"
+          },
+          {
+            "source": "s-municipality",
+            "estimate": 1800,
+            "timestamp": "21:15"
+          }
+        ],
+        "series": [
+          {
+            "time": "20:18",
+            "estimate": 0,
+            "low": 0,
+            "high": 0
+          },
+          {
+            "time": "20:30",
+            "estimate": 900,
+            "low": 650,
+            "high": 1200
+          },
+          {
+            "time": "20:50",
+            "estimate": 1800,
+            "low": 1300,
+            "high": 2600
+          },
+          {
+            "time": "21:20",
+            "estimate": 2100,
+            "low": 1500,
+            "high": 3000
+          },
+          {
+            "time": "21:50",
+            "estimate": 1600,
+            "low": 1100,
+            "high": 2300
+          },
+          {
+            "time": "22:10",
+            "estimate": 600,
+            "low": 400,
+            "high": 900
+          },
+          {
+            "time": "22:25",
+            "estimate": 0,
+            "low": 0,
+            "high": 0
+          }
+        ]
+      },
+      "confidence": "disputed",
+      "confidenceNote": "Organisers say 5,000 people were there; the municipality says 1,800. Our own count from geolocated photos at 21:20 puts it between 1,500 and 3,000.",
+      "sources": [
+        {
+          "source": "s-reporter",
+          "timestamp": "20:25",
+          "detail": "Crowd building up on the Stadhuisplein.",
+          "link": "https://example.com/placeholder/reporter-2025"
+        },
+        {
+          "source": "s-organisers",
+          "timestamp": "21:05",
+          "detail": "Claim: 5,000 people.",
+          "link": "https://example.com/placeholder/organisers-2105"
+        },
+        {
+          "source": "s-municipality",
+          "timestamp": "21:15",
+          "detail": "Estimate: 1,800 people.",
+          "link": "https://example.com/placeholder/municipality-2115"
+        },
+        {
+          "source": "s-photo",
+          "timestamp": "21:20",
+          "detail": "Geolocated photos used for our count.",
+          "link": "https://example.com/placeholder/photo-2120"
+        }
+      ]
+    },
+    {
+      "id": "e9",
+      "time": "20:58",
+      "title": "Posts claim a sit-down on Grote Berg",
+      "summary": "Several posts claim that a group sat down on Grote Berg. We could not verify this: none of our reporters were on Grote Berg at the time, and the images could not be geolocated.",
+      "type": "gathering",
+      "place": "Grote Berg",
+      "location": {
+        "type": "point",
+        "coordinates": [
+          5.4763,
+          51.43592
+        ]
+      },
+      "confidence": "unverified",
+      "confidenceNote": "The images circulating online could not be dated or geolocated. Treat this claim with caution.",
+      "sources": [
+        {
+          "source": "s-social",
+          "timestamp": "20:58",
+          "detail": "First post making the claim.",
+          "link": "https://example.com/placeholder/social-2058"
+        },
+        {
+          "source": "s-social",
+          "timestamp": "21:03",
+          "detail": "Re-share with a different photo.",
+          "link": "https://example.com/placeholder/social-2103"
+        }
+      ]
+    },
+    {
+      "id": "e10",
+      "time": "21:20",
+      "title": "Organisers announce the end of the march",
+      "summary": "Speaking through a megaphone on the Stadhuisplein, organisers thank the crowd and ask people to leave by 22:00 so buses can run again.",
+      "type": "statement",
+      "place": "Stadhuisplein",
+      "location": {
+        "type": "point",
+        "coordinates": [
+          5.48055,
+          51.43565
+        ]
+      },
+      "quote": {
+        "text": "Thank you for coming. Please head home safely, and keep your lights on.",
+        "attribution": "Organiser (invented quote)"
+      },
+      "confidence": "reported",
+      "confidenceNote": "Reported from the livestream. Our reporter arrived after the announcement.",
+      "sources": [
+        {
+          "source": "s-livestream",
+          "timestamp": "21:20",
+          "detail": "Announcement on the livestream.",
+          "link": "https://example.com/placeholder/livestream-2120"
+        },
+        {
+          "source": "s-organisers",
+          "timestamp": "21:24",
+          "detail": "Post repeating the announcement.",
+          "link": "https://example.com/placeholder/organisers-2124"
+        }
+      ]
+    },
+    {
+      "id": "e11",
+      "time": {
+        "start": "21:50",
+        "end": "22:30"
+      },
+      "title": "Crowd disperses",
+      "summary": "People leave the Stadhuisplein in several directions: north along the Wal towards the Markt, south over the Dommel, west through Groot Paradijs and back up Stratumseind.",
+      "type": "movement",
+      "place": "Stadhuisplein",
+      "location": {
+        "type": "paths",
+        "snap": "streets",
+        "anchor": [
+          5.48035,
+          51.43548
+        ],
+        "via": [
+          [
+            [
+              5.48043,
+              51.43543
+            ],
+            [
+              5.47942,
+              51.43545
+            ],
+            [
+              5.47863,
+              51.43609
+            ],
+            [
+              5.47865,
+              51.43694
+            ],
+            [
+              5.47963,
+              51.43739
+            ],
+            [
+              5.4787,
+              51.4384
+            ]
+          ],
+          [
+            [
+              5.48043,
+              51.43543
+            ],
+            [
+              5.48065,
+              51.43433
+            ],
+            [
+              5.48161,
+              51.43373
+            ],
+            [
+              5.4825,
+              51.4331
+            ]
+          ],
+          [
+            [
+              5.48043,
+              51.43543
+            ],
+            [
+              5.48027,
+              51.43458
+            ],
+            [
+              5.47871,
+              51.43398
+            ]
+          ],
+          [
+            [
+              5.48043,
+              51.43543
+            ],
+            [
+              5.48119,
+              51.43541
+            ],
+            [
+              5.48268,
+              51.43602
+            ],
+            [
+              5.48036,
+              51.4369
+            ]
+          ]
+        ],
+        "coordinates": [
+          [
+            [
+              5.480455,
+              51.435297
+            ],
+            [
+              5.48041,
+              51.435276
+            ],
+            [
+              5.480059,
+              51.435575
+            ],
+            [
+              5.479966,
+              51.435664
+            ],
+            [
+              5.479417,
+              51.435446
+            ],
+            [
+              5.479192,
+              51.435646
+            ],
+            [
+              5.478634,
+              51.436094
+            ],
+            [
+              5.478013,
+              51.436566
+            ],
+            [
+              5.478094,
+              51.43664
+            ],
+            [
+              5.478652,
+              51.436935
+            ],
+            [
+              5.478689,
+              51.43693
+            ],
+            [
+              5.479626,
+              51.437387
+            ],
+            [
+              5.479416,
+              51.437535
+            ],
+            [
+              5.47845,
+              51.43828
+            ]
+          ],
+          [
+            [
+              5.480455,
+              51.435297
+            ],
+            [
+              5.48004,
+              51.435106
+            ],
+            [
+              5.480083,
+              51.43506
+            ],
+            [
+              5.479986,
+              51.435019
+            ],
+            [
+              5.480034,
+              51.43497
+            ],
+            [
+              5.480204,
+              51.434759
+            ],
+            [
+              5.48036,
+              51.434623
+            ],
+            [
+              5.480266,
+              51.43458
+            ],
+            [
+              5.480429,
+              51.434456
+            ],
+            [
+              5.480949,
+              51.43416
+            ],
+            [
+              5.481389,
+              51.433869
+            ],
+            [
+              5.481606,
+              51.433732
+            ],
+            [
+              5.482035,
+              51.433426
+            ],
+            [
+              5.482504,
+              51.433101
+            ]
+          ],
+          [
+            [
+              5.480455,
+              51.435297
+            ],
+            [
+              5.48004,
+              51.435106
+            ],
+            [
+              5.480083,
+              51.43506
+            ],
+            [
+              5.479986,
+              51.435019
+            ],
+            [
+              5.480034,
+              51.43497
+            ],
+            [
+              5.480204,
+              51.434759
+            ],
+            [
+              5.48036,
+              51.434623
+            ],
+            [
+              5.480266,
+              51.43458
+            ],
+            [
+              5.478711,
+              51.43398
+            ]
+          ],
+          [
+            [
+              5.480455,
+              51.435297
+            ],
+            [
+              5.48103,
+              51.435552
+            ],
+            [
+              5.48119,
+              51.435414
+            ],
+            [
+              5.4822,
+              51.43583
+            ],
+            [
+              5.482684,
+              51.436023
+            ],
+            [
+              5.482572,
+              51.436138
+            ],
+            [
+              5.481592,
+              51.436451
+            ],
+            [
+              5.480443,
+              51.436863
+            ],
+            [
+              5.48036,
+              51.436898
+            ]
+          ]
+        ]
+      },
+      "crowd": {
+        "estimate": 1600,
+        "low": 1100,
+        "high": 2300
+      },
+      "confidence": "confirmed",
+      "confidenceNote": "Seen by our reporter and confirmed by photos on the Stadhuisplein and the Wal.",
+      "sources": [
+        {
+          "source": "s-reporter",
+          "timestamp": "21:55",
+          "detail": "Crowd thinning out on the Stadhuisplein.",
+          "link": "https://example.com/placeholder/reporter-2155"
+        },
+        {
+          "source": "s-photo",
+          "timestamp": "22:10",
+          "detail": "Photos on the Wal and Groot Paradijs.",
+          "link": "https://example.com/placeholder/photo-2210"
+        }
+      ]
+    },
+    {
+      "id": "e12",
+      "time": "22:40",
+      "title": "Wal reopens, buses back to normal",
+      "summary": "The barriers on the Wal are removed. The first buses run their normal route again from about 22:50.",
+      "type": "transport",
+      "place": "Wal",
+      "location": {
+        "type": "point",
+        "coordinates": [
+          5.47835,
+          51.43632
+        ]
+      },
+      "confidence": "confirmed",
+      "confidenceNote": "Shown in the traffic feed and the operator’s notice, and seen by our reporter.",
+      "sources": [
+        {
+          "source": "s-traffic",
+          "timestamp": "22:40",
+          "detail": "Status change: Wal open.",
+          "link": "https://example.com/placeholder/traffic-2240"
+        },
+        {
+          "source": "s-bus",
+          "timestamp": "22:47",
+          "detail": "Service notice: normal routes resume.",
+          "link": "https://example.com/placeholder/bus-2247"
+        },
+        {
+          "source": "s-reporter",
+          "timestamp": "22:52",
+          "detail": "First bus along the Wal.",
+          "link": "https://example.com/placeholder/reporter-2252"
+        }
+      ]
+    }
+  ]
+}

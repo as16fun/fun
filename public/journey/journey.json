@@ -1,0 +1,130 @@
+{
+  "$comment": "All copy on the journey page comes from this file. Fields in [brackets] are placeholders to fill in. 'period' is optional: leave it empty to show only the duration. 'place.icon' names an icon in src/ui/icons.js. Without an email, Contact links to the first profile link (LinkedIn).",
+  "person": {
+    "name": "Alessandra Stagno",
+    "role": "AI product designer, 10+y experience (4y in cartographic fields)",
+    "intro": "From an art academy in Macerata to leading design in the Netherlands. Scroll to follow the route.",
+    "email": "[you@example.com]",
+    "links": [
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/senior-product-designer/" }
+    ]
+  },
+  "intro": {
+    "camera": { "center": [13.45, 43.3], "zoom": 5.4, "pitch": 0, "bearing": 0 }
+  },
+  "chapters": [
+    {
+      "id": "macerata",
+      "city": "Macerata",
+      "country": "Italy",
+      "district": "journey/macerata",
+      "tag": "Study & freelance",
+      "period": "",
+      "title": "Where it started",
+      "text": "I took my bachelor's and master's degrees in Graphic and UI Design at the Academy of Fine Arts of Macerata, and freelanced for 20 companies, from startups to Fortune 500.",
+      "stats": [
+        { "value": "Bachelor + Master", "label": "Graphic & UI Design" },
+        { "value": "20", "label": "freelance clients" },
+        { "value": "Startups &\nFortune 500", "label": "client range" }
+      ],
+      "place": {
+        "name": "Accademia di Belle Arti di Macerata",
+        "sub": "Academy of Fine Arts · Via Berardi 6",
+        "point": [13.450895, 43.301029],
+        "buildingIds": ["w242487061"],
+        "icon": "cap"
+      },
+      "camera": { "center": [13.45075, 43.30118], "zoom": 17.35, "pitch": 56, "bearing": 32 }
+    },
+    {
+      "id": "eindhoven",
+      "city": "Eindhoven",
+      "country": "the Netherlands",
+      "district": "journey/eindhoven",
+      "tag": "Mapcreator · 4 years",
+      "period": "",
+      "title": "Four years in\ncartography startup",
+      "text": "At Mapcreator, in the Eindhoven Tower, I spent four years building cartographic knowledge. I started as the only designer and grew into leading four other designers.",
+      "stats": [
+        { "value": "4", "label": "years at Mapcreator" },
+        { "value": "1 → 5", "label": "from solo designer to mentoring 4 designers" },
+        { "value": "Maps", "label": "cartographic design" }
+      ],
+      "caseStudies": {
+        "$comment": "The card lists each case study with its number, title, year and a 'Read the case study' link (set 'url' when the page exists; until then it shows 'coming soon'). 'tag', 'summary' and 'demo' appear in the 'More from Mapcreator' footer of the other case study.",
+        "title": "Check case studies",
+        "items": [
+          {
+            "title": "Designing 3D story maps for newsrooms",
+            "year": "2022",
+            "tag": "Mapcreator · 2022",
+            "summary": "A 3D map in the Mapcreator tool that lets newsrooms rebuild how a story unfolded: where, in what order and along which routes.",
+            "url": "case-studies/story-maps/",
+            "image": "case-studies/story-maps/dispatch-overview.jpg",
+            "demo": { "label": "Try the concept", "url": "dispatch.html" }
+          },
+          {
+            "title": "Designing the live 2020 US election map for newsrooms",
+            "year": "2020",
+            "tag": "Mapcreator · 2020",
+            "summary": "Turning complex, constantly changing election data into a map people could understand in seconds, shipped in four weeks.",
+            "url": "case-studies/us-election-2020/",
+            "image": "case-studies/us-election-2020/final-result-desktop.jpg"
+          }
+        ]
+      },
+      "place": {
+        "name": "Eindhoven Tower",
+        "sub": "Mapcreator · Bogert 31",
+        "point": [5.474178, 51.444387],
+        "buildingIds": ["w272547157"],
+        "icon": "tower"
+      },
+      "camera": { "center": [5.47395, 51.44425], "zoom": 16.75, "pitch": 58, "bearing": -38 }
+    },
+    {
+      "id": "den-haag",
+      "city": "Den Haag",
+      "country": "the Netherlands",
+      "district": "journey/den-haag",
+      "tag": "Superside · 4 years · remote",
+      "period": "",
+      "title": "4 years\nin Superside",
+      "text": "From Den Haag I worked remotely for Superside, a US company, for four years, growing from Senior to Lead. I worked both on their SaaS tool and with the Fortune 500 clients Superside has.",
+      "stats": [
+        { "value": "4", "label": "years at Superside" },
+        { "value": "Senior → Lead", "label": "IC role" },
+        { "value": "Remote", "label": "for a US company" }
+      ],
+      "place": {
+        "name": "Den Haag",
+        "sub": "Remote for Superside (US)",
+        "point": [4.3122, 52.0802],
+        "buildingIds": [],
+        "marker": "city",
+        "icon": "laptop"
+      },
+      "caseStudies": {
+        "title": "Check case studies",
+        "items": [
+          {
+            "title": "Turning project management into a brand brain (multi-agents platform)",
+            "year": "2026",
+            "tag": "Superside · 2026",
+            "summary": "Brand Brain: one shared memory per brand, used by four AI agents, with people making the final call. 42% less churn.",
+            "url": "case-studies/brand-brain/",
+            "image": "case-studies/brand-brain/16-home-prompt-v5.jpg",
+            "demo": { "label": "Try the prototype", "url": "case-studies/brand-brain/prototype.html" }
+          }
+        ]
+      },
+      "camera": { "center": [4.31246, 52.0802], "zoom": 16.5, "pitch": 52, "bearing": -30 }
+    }
+  ],
+  "outro": {
+    "route": "Studying & Freelancing → cartographic product designer → design agency product designer",
+    "title": "Next stop?",
+    "text": "That's the route so far. Who knows what's next? Maybe you?",
+    "cta": { "label": "Get in touch", "url": "mailto:[you@example.com]" }
+  }
+}

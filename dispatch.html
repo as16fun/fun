@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Storyline · Evening demonstration in the city centre (fictional demo)</title>
+    <meta name="description" content="Storyline is a 3D story map for newsrooms. This fictional demo scenario follows an invented evening demonstration through central Eindhoven." />
+    <meta name="theme-color" content="#F2F4F7" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#story-panel">Skip to the story</a>
+    <main class="app" id="app">
+      <div class="map" id="map" role="region" aria-label="3D map of central Eindhoven. Use the event list or the numbered pins to explore events."></div>
+      <div class="map-haze" aria-hidden="true"></div>
+      <div class="overlay" id="overlay"></div>
+      <div class="ui" id="ui"></div>
+      <div class="boot" id="boot" aria-live="polite">
+        <div class="boot-mark" aria-hidden="true"></div>
+        <p id="boot-status">Loading the city…</p>
+      </div>
+    </main>
+    <div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

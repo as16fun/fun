@@ -1,0 +1,20 @@
+Querying https://overpass-api.de/api/interpreter (attempt 1/5) for bbox 51.439808,5.466394,51.448792,5.480806 …
+  ✖ HTTP 504: runtime error: open64: 0 Success /osm3s_osm_base Dispatcher_Client::request_read_and_idx::timeout. The server is probably too busy to handle your request.
+Querying https://overpass.private.coffee/api/interpreter (attempt 1/5) for bbox 51.439808,5.466394,51.448792,5.480806 …
+  ✖ HTTP 500: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">…
+Querying https://maps.mail.ru/osm/tools/overpass/api/interpreter (attempt 1/5) for bbox 51.439808,5.466394,51.448792,5.480806 …
+  ✖ HTTP 504: runtime error: open64: 0 Success /osm3s_osm_base Dispatcher_Client::request_read_and_idx::timeout. The server is probably too busy to handle your request.
+Querying https://overpass.kumi.systems/api/interpreter (attempt 1/5) for bbox 51.439808,5.466394,51.448792,5.480806 …
+  ✔ 4304 elements (OSM base 2026-07-24T11:04:51Z)
+Baking shadows, contact shading and edge fade …
+✔ Wrote buildings.geojson 668 KB, roads.geojson 280 KB, rail.geojson 0 KB, water.geojson 7 KB, green.geojson 91 KB, trees.geojson 104 KB, lighting.png 1525 KB
+  counts: {
+  buildings: 1815,
+  roads: 1107,
+  rail: 0,
+  water: 18,
+  green: 242,
+  trees: 665
+} 
+  building heights: { height: 23, levels: 968, estimate: 824 }
+exit 0

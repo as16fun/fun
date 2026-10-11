@@ -1,0 +1,82 @@
+{
+  "name": "Eindhoven, NL — Eindhoven Tower",
+  "origin": [
+    5.4736,
+    51.4443
+  ],
+  "focus": [
+    5.474178,
+    51.444387
+  ],
+  "projection": {
+    "type": "equirectangular (build-time only)",
+    "note": "Files are WGS84 (lon, lat). Local metres x = (lon - lon0) * kx, y = (lat - lat0) * ky are used for build-time maths.",
+    "radius": 6378137,
+    "kx": 69382.67272500978,
+    "ky": 111319.49079327357
+  },
+  "core": {
+    "halfSize": 300,
+    "bounds": [
+      5.4692762,
+      51.4416051,
+      5.4779238,
+      51.4469949
+    ]
+  },
+  "fade": {
+    "start": 320,
+    "end": 485,
+    "norm": "superellipse p=4"
+  },
+  "bounds": [
+    5.4663936,
+    51.4398084,
+    5.4808064,
+    51.4487916
+  ],
+  "sun": {
+    "azimuth": 210,
+    "elevation": 48
+  },
+  "lighting": {
+    "image": "lighting.png",
+    "size": 2048,
+    "coordinates": [
+      [
+        5.4663936,
+        51.4487916
+      ],
+      [
+        5.4808064,
+        51.4487916
+      ],
+      [
+        5.4808064,
+        51.4398084
+      ],
+      [
+        5.4663936,
+        51.4398084
+      ]
+    ]
+  },
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL 1.0 — https://opendatacommons.org/licenses/odbl/",
+  "source": "OpenStreetMap via the Overpass API",
+  "osmBase": "2026-07-24T11:04:51Z",
+  "generatedAt": "2026-10-09T15:38:10.225Z",
+  "heightSources": {
+    "height": 23,
+    "levels": 968,
+    "estimate": 824
+  },
+  "counts": {
+    "buildings": 1815,
+    "roads": 1107,
+    "rail": 0,
+    "water": 18,
+    "green": 242,
+    "trees": 665
+  }
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>From Macerata to Den Haag · Design journey</title>
+    <meta name="description" content="A designer's route on the map: graphic and UI design in Macerata, four years of cartography at Mapcreator in Eindhoven, and four years leading design remotely for Superside from Den Haag." />
+    <meta name="theme-color" content="#EEF1EA" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="journey-page">
+    <a class="skip-link" href="#story">Skip to the story</a>
+    <div class="j-map" id="map" aria-hidden="true"></div>
+    <div class="j-haze" aria-hidden="true"></div>
+    <div class="j-overlay" id="overlay" aria-hidden="true"></div>
+    <header class="j-topbar" id="topbar"></header>
+    <main class="j-story" id="story" tabindex="-1"></main>
+    <nav class="j-progress" id="progress" aria-label="Journey stops"></nav>
+    <div class="j-controls" id="controls"></div>
+    <p class="j-attribution">
+      © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors ·
+      <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener">Natural Earth</a>
+    </p>
+    <div class="j-boot" id="boot" aria-live="polite"><span class="j-boot-mark" aria-hidden="true"></span><p>Drawing the map…</p></div>
+    <script type="module" src="/src/journey/main.js"></script>
+  </body>
+</html>

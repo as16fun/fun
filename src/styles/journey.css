@@ -1,0 +1,395 @@
+/* ── Tokens (shared look with the Storyline concept) ──────────────────────── */
+:root {
+  --bg: #eef1ea;
+  --ink: #0e1220;
+  --ink-2: #434a5e;
+  --ink-3: #6a7084;
+  --line: rgba(14, 18, 32, 0.08);
+  --line-2: rgba(14, 18, 32, 0.14);
+  --glass: rgba(255, 255, 255, 0.78);
+  --glass-edge: rgba(255, 255, 255, 0.85);
+  --shadow: 0 1px 1px rgba(16, 24, 40, 0.04), 0 10px 28px -8px rgba(16, 24, 40, 0.12), 0 36px 72px -24px rgba(16, 24, 40, 0.18);
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06), 0 6px 16px -6px rgba(16, 24, 40, 0.14);
+  --lime: #c8f577;       /* the accent: containers are lime, text on them stays black */
+  --lime-soft: #ecffd2;
+  --lime-deep: #84e024;  /* lines and glows on the map, where plain lime would vanish */
+  --amber: #e9a23b;
+  --amber-ink: #8a5600;
+  --amber-soft: #fdf3e3;
+  --focus: #0e1220;
+  --radius: 18px;
+  --font: 'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --story-w: 470px;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body.journey-page {
+  margin: 0; min-height: 100%; background: var(--bg); color: var(--ink);
+  font: 400 15px/1.5 var(--font);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+a { color: var(--ink); text-underline-offset: 3px; }
+:focus-visible { outline: 2.5px solid var(--focus); outline-offset: 3px; border-radius: 8px; }
+.icon { display: block; flex: none; }
+::selection { background: var(--lime); color: var(--ink); }
+.skip-link {
+  position: fixed; left: 16px; top: -60px; z-index: 100; padding: 10px 14px; border-radius: 10px;
+  background: var(--ink); color: #fff; text-decoration: none; font-weight: 600; transition: top 0.2s;
+}
+.skip-link:focus { top: 16px; }
+.ph {
+  padding: 0 5px; border-radius: 5px; background: var(--amber-soft); color: var(--amber-ink);
+  box-shadow: inset 0 0 0 1px rgba(233, 162, 59, 0.55); font-weight: 650;
+}
+
+/* ── Map layers ──────────────────────────────────────────────────────────── */
+.j-map { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.j-map.maplibregl-map { position: fixed; }
+html.is-exploring .j-map { pointer-events: auto; }
+.j-map .maplibregl-canvas { outline: none; }
+html:not(.is-ready) .j-map { opacity: 0; }
+.j-map { transition: opacity 0.9s var(--ease); }
+.j-haze {
+  position: fixed; inset: 0 0 auto 0; height: 26vh; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(242, 244, 247, 0.9), rgba(242, 244, 247, 0));
+}
+/* a soft scrim behind the story column keeps text crisp over busy map areas */
+body.journey-page::after {
+  content: ''; position: fixed; inset: 0 auto 0 0; width: min(760px, 62vw); z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(242, 244, 247, 0.72) 0%, rgba(242, 244, 247, 0.4) 55%, rgba(242, 244, 247, 0) 100%);
+}
+html.is-exploring body.journey-page::after { opacity: 0; transition: opacity 0.4s; }
+.j-overlay { position: fixed; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; transition: opacity 0.9s var(--ease); }
+html:not(.is-ready) .j-overlay { opacity: 0; }
+.j-outline { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.j-outline path {
+  fill: rgba(255, 255, 255, 0.06); stroke: #fff; stroke-width: 2; stroke-linejoin: round;
+  filter: drop-shadow(0 0 3px rgba(132, 224, 36, 0.95)) drop-shadow(0 0 10px rgba(132, 224, 36, 0.5));
+}
+
+.j-city {
+  position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  margin: -14px 0 0; padding: 4px 10px 4px 4px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94); box-shadow: var(--shadow-sm); border: 1px solid var(--line);
+  transition: box-shadow 0.3s;
+}
+.j-city-n { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--lime); color: var(--ink); font-size: 11px; font-weight: 700; }
+.j-city-name { font-size: 13px; font-weight: 700; }
+.j-city-country { font-size: 11.5px; color: var(--ink-3); }
+.j-city.is-active { box-shadow: 0 0 0 2px var(--lime-deep), var(--shadow-sm); }
+.j-marker.is-city .j-marker-stem { display: none; }
+.j-marker.is-city .j-marker-card { bottom: 0; }
+
+.j-marker { position: absolute; left: 0; top: 0; }
+.j-marker-card {
+  position: absolute; left: 0; bottom: 28px; transform: translateX(calc(-50% + var(--dx, 0px)));
+  display: flex; align-items: center; gap: 10px; padding: 10px 19px 10px 10px; border-radius: 999px; white-space: nowrap;
+  background: rgba(255, 255, 255, 0.96); border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.j-marker-icon {
+  width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex: none;
+  background: var(--lime); color: var(--ink); box-shadow: 0 4px 12px -3px rgba(132, 224, 36, 0.7);
+}
+.j-marker-icon .icon { width: 16px; height: 16px; }
+.j-marker-text { display: grid; line-height: 1.25; }
+.j-marker-text strong { font-size: 13.5px; font-weight: 700; }
+.j-marker-text small { font-size: 11.5px; color: var(--ink-3); }
+.j-marker-stem {
+  position: absolute; left: -1px; bottom: 0; width: 2px; height: 26px;
+  background: linear-gradient(to top, rgba(132, 224, 36, 0.2), var(--lime-deep));
+}
+.j-marker-stem::after {
+  content: ''; position: absolute; left: -3px; bottom: -4px; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--lime-deep); box-shadow: 0 0 0 2px #fff;
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────────── */
+.j-topbar {
+  position: fixed; z-index: 10; top: 16px; left: 16px; right: 16px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 10px 0 12px;
+  /* one navigation bar everywhere: a glass pill, solid white at the ends and clear in the middle */
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.28) 24%, rgba(255, 255, 255, 0.28) 76%, rgba(255, 255, 255, 0.92) 100%);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5); backdrop-filter: blur(16px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 999px; box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.25);
+}
+.j-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 700; font-size: 15.5px; letter-spacing: -0.015em; }
+.j-brand-mark { display: grid; }
+.j-nav { display: flex; align-items: center; gap: 4px; }
+.j-nav a { display: inline-flex; align-items: center; gap: 4px; padding: 9px 16px; border-radius: 999px; color: var(--ink-2); font-size: 13.5px; font-weight: 600; text-decoration: none; transition: background 0.15s, color 0.15s; }
+.j-nav a .icon { width: 14px; height: 14px; }
+.j-nav a:hover { background: rgba(14, 18, 32, 0.06); color: var(--ink); }
+.j-nav .j-nav-cta { background: var(--ink); color: #fff; }
+.j-nav .j-nav-cta:hover { background: #20263a; color: #fff; }
+
+/* ── Story column ───────────────────────────────────────────────────────── */
+.j-story { position: relative; z-index: 5; width: calc(var(--story-w) + 32px); padding: 0 0 0 32px; outline: none; }
+.j-step {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 26px;
+  padding: 92px 0 104px;
+}
+.j-step.j-outro { min-height: 115vh; padding-bottom: 30vh; }
+.j-hero { margin: 0 0 28px; padding: 0 0 26px; border-bottom: 1px solid rgba(14, 18, 32, 0.14); }
+.j-hero .j-name { font-size: clamp(32px, 3.4vw, 40px); }
+.j-eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 14px; padding: 0; font: 400 11px "IBM Plex Mono", ui-monospace, monospace; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); }
+.j-eyebrow::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--lime); flex: none; }
+.j-name { margin: 0; font-size: clamp(36px, 4.4vw, 52px); line-height: 1.02; font-weight: 600; letter-spacing: -0.035em; text-wrap: balance; }
+.j-role { margin: 12px 0 0; font-size: 15px; line-height: 1.4; font-weight: 500; color: var(--ink-2); text-wrap: balance; }
+.j-role-sub { font-weight: 400; }
+.j-intro { margin: 12px 0 0; font-size: 15.5px; color: var(--ink-2); max-width: 400px; }
+
+.j-card {
+  position: relative; isolation: isolate; width: 100%; max-width: var(--story-w); padding: 24px 26px 24px;
+  /* the surface is a pseudo-element, so the corner notch can be masked out without clipping the shadow */
+  filter: drop-shadow(0 1px 1px rgba(16, 24, 40, 0.05)) drop-shadow(0 20px 30px rgba(16, 24, 40, 0.14));
+  transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
+  outline: none;
+}
+.j-card::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; border-radius: 16px; background: #FBFCF8;
+}
+.j-card.has-next::before {
+  -webkit-mask: radial-gradient(circle 35px at calc(100% - 26px) calc(100% - 26px), transparent 34px, #000 35px);
+  mask: radial-gradient(circle 35px at calc(100% - 26px) calc(100% - 26px), transparent 34px, #000 35px);
+}
+.j-step:not(.is-active) .j-card { opacity: 0.55; transform: scale(0.985); }
+.j-step:not(.is-active) .j-cases { transform: scale(0.985); }
+.j-kicker { display: flex; align-items: center; gap: 9px; margin: 0 0 22px; font-size: 13px; font-weight: 500; color: var(--ink-3); }
+.j-num { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: var(--lime); color: var(--ink); font-size: 11px; font-weight: 700; }
+.j-count { margin-left: auto; font: 400 12px "IBM Plex Mono", ui-monospace, monospace; letter-spacing: 0.02em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.j-quote { padding: 0; }
+.j-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; margin: 10px 0 0; font-size: 13px; font-weight: 600; color: var(--ink-3); }
+.j-tag { color: var(--ink); }
+.j-period:not(:first-child)::before { content: '·'; margin: 0 7px; color: var(--ink-3); }
+.j-title { margin: 0 0 8px; font-size: 36px; line-height: 1.12; font-weight: 600; letter-spacing: -0.026em; text-wrap: balance; }
+.j-text { margin: 0; font-size: 15px; font-weight: 400; line-height: 1.5; color: #58675D; text-wrap: pretty; }
+.j-roles { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 16px 0 0; padding: 0; }
+.j-roles li { padding: 5px 11px; border-radius: 999px; background: #d5d5d5; font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.j-roles.is-progression li { position: relative; }
+.j-roles.is-progression li + li { margin-left: 20px; background: var(--ink); color: #fff; }
+.j-roles.is-progression li + li::before {
+  content: '→'; position: absolute; left: -19px; top: 50%; transform: translateY(-50%); color: var(--ink-3); font-weight: 700;
+}
+.j-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid rgba(14, 18, 32, 0.14); }
+.j-stat { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 10px; padding: 0 14px; }
+.j-stat:first-child { padding-left: 0; }
+.j-stat + .j-stat { border-left: 1px solid rgba(14, 18, 32, 0.14); }
+.j-stat dd { margin: 0; min-height: 40px; font-size: 17px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; overflow-wrap: normal; }
+.j-stat.is-number { background: none; }
+.j-stat.is-number dt { color: var(--ink-3); }
+.j-stat.is-number dd { font-size: 34px; line-height: 1; font-weight: 600; letter-spacing: -0.045em; color: var(--ink); }
+.j-stat .j-arrow { color: var(--ink); }
+.j-stat dt { font-size: 11px; line-height: 1.3; color: var(--ink-3); font-weight: 400; }
+/* Case studies: their own card under the stop's card */
+.j-stack { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: var(--story-w); }
+.j-stack .j-card { max-width: none; }
+.j-cases {
+  margin: 0; padding: 22px 26px 8px; border-radius: 16px; background: #FBFCF8;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 14px 30px -10px rgba(16, 24, 40, 0.18);
+  transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
+}
+.j-cases-title {
+  display: flex; align-items: center; justify-content: space-between; margin: 0 0 6px;
+  font: 400 11px/1.4 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3);
+}
+.j-cases-list { list-style: none; margin: 0; padding: 0; }
+.j-case { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
+.j-case + .j-case { border-top: 1px solid rgba(14, 18, 32, 0.1); }
+.j-case-body { min-width: 0; }
+.j-case-top { margin: 0; }
+.j-case-title { font-size: 18px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; text-wrap: balance; }
+.j-case-title:focus-visible { outline: none; }
+.j-case.is-ready .j-case-title::after { content: ''; position: absolute; inset: 0; }
+.j-case.is-ready:has(.j-case-title:focus-visible) { outline: 2.5px solid var(--focus); outline-offset: 2px; border-radius: 10px; }
+.j-case-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin: 12px 0 0; }
+.j-case-year { font: 400 13px "IBM Plex Mono", ui-monospace, monospace; color: var(--ink-3); }
+.j-case-read { font-size: 14px; font-weight: 500; color: #5A7A34; }
+.j-case-soon { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--ink-3); }
+.j-case-soon::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+.j-case-go { flex: none; pointer-events: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #ecf6dc; color: #4b6b2a; transition: background 0.2s, transform 0.2s var(--ease); }
+.j-case-go .icon { width: 18px; height: 18px; }
+.j-case.is-ready:hover .j-case-go { background: var(--lime); transform: translate(1px, -1px); }
+
+.j-card-foot { margin: 0; min-height: 36px; }
+.j-place { display: flex; align-items: center; gap: 10px; margin: 0; min-width: 0; }
+.j-place > span:last-child { display: grid; }
+.j-place strong { font-size: 13.5px; font-weight: 650; }
+.j-place small { font-size: 12px; color: var(--ink-3); }
+.j-place-icon { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--lime); color: var(--ink); flex: none; }
+.j-place-icon .icon { width: 17px; height: 17px; }
+.j-next {
+  position: absolute; right: 0; bottom: 0; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ink); color: #fff; text-decoration: none; transition: background 0.2s, transform 0.3s var(--ease);
+}
+.j-next:hover { background: var(--lime); color: var(--ink); transform: scale(1.06); }
+.j-next .icon { width: 20px; height: 20px; transition: transform 0.25s var(--ease); }
+.j-next:hover .icon { transform: translateY(2px); }
+/* the first stop's button blinks and bobs until the reader scrolls: it says "scroll down" */
+html:not(.has-scrolled) .j-next.is-nudge { animation: j-blink 1.5s ease-in-out infinite; }
+html:not(.has-scrolled) .j-next.is-nudge .icon { animation: j-bob 1.5s ease-in-out infinite; }
+html:not(.has-scrolled) .j-next.is-nudge::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--lime-deep); animation: j-ring 1.5s ease-out infinite;
+}
+@keyframes j-blink { 0%, 100% { background: var(--ink); color: #fff; } 50% { background: var(--lime); color: var(--ink); } }
+@keyframes j-bob { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+@keyframes j-ring { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.5); opacity: 0; } }
+.j-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.j-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 16px; border-radius: 999px;
+  border: 1px solid var(--line-2); background: #fff; color: var(--ink); font-size: 14px; font-weight: 650; text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.j-btn:hover { border-color: rgba(14, 18, 32, 0.26); }
+.j-btn .icon { width: 16px; height: 16px; }
+.j-btn.primary { background: var(--ink); color: #fff; border-color: transparent; }
+.j-btn.primary:hover { background: #20263a; }
+.j-btn[aria-disabled='true'] { opacity: 0.55; }
+.j-links { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0 0; font-size: 13.5px; font-weight: 600; }
+.j-links a { display: inline-flex; align-items: center; gap: 4px; height: 30px; padding: 0 12px; border-radius: 999px; background: var(--lime); color: var(--ink); text-decoration: none; }
+.j-links .icon { width: 14px; height: 14px; }
+
+/* ── Progress (bottom) ──────────────────────────────────────────────────── */
+.j-progress {
+  position: fixed; z-index: 9; bottom: 22px; left: 50%;
+  transform: translateX(-50%); padding: 10px 12px;
+  background: var(--glass); -webkit-backdrop-filter: blur(22px) saturate(1.5); backdrop-filter: blur(22px) saturate(1.5);
+  border: 1px solid var(--glass-edge); border-radius: 999px; box-shadow: var(--shadow);
+}
+.j-progress ol { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
+.j-progress li { display: flex; align-items: center; }
+/* the line between two stops sits 10 px from the text before it and the number after it */
+.j-leg { flex: none; width: 34px; height: 2px; border-radius: 2px; background: var(--line-2); overflow: hidden; }
+.j-leg i { display: block; height: 100%; background: var(--lime-deep); transform-origin: left; transform: scaleX(0); transition: transform 0.15s linear; }
+.j-stop {
+  display: flex; align-items: center; gap: 9px; padding: 5px 10px;
+  border: 0; border-radius: 999px; background: transparent; cursor: pointer; font: inherit; color: var(--ink-2);
+  transition: background 0.15s;
+}
+.j-stop:hover { background: rgba(14, 18, 32, 0.05); }
+.j-stop-dot {
+  width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; flex: none;
+  background: #fff; color: var(--ink); box-shadow: inset 0 0 0 2px #E1E6DD; font-size: 12px; font-weight: 700;
+  transition: background 0.3s, color 0.3s, transform 0.3s var(--ease);
+}
+.j-stop-text { display: grid; text-align: left; line-height: 1.2; }
+.j-stop-text b { font-size: 13px; font-weight: 700; color: var(--ink); white-space: nowrap; transition: color 0.3s; }
+.j-stop:not(.is-active, .is-done) .j-stop-text b { color: var(--ink-2); }
+.j-stop-text small { font-size: 11px; color: var(--ink-3); white-space: nowrap; }
+.j-stop.is-done .j-stop-dot, .j-stop.is-active .j-stop-dot { background: var(--lime); color: var(--ink); box-shadow: none; }
+.j-stop.is-active .j-stop-dot { transform: scale(1.12); box-shadow: 0 0 0 4px rgba(132, 224, 36, 0.35); }
+
+/* ── Explore controls & attribution ──────────────────────────────────────── */
+.j-controls { position: fixed; z-index: 9; right: 18px; top: 86px; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 8px; }
+.j-explore, .j-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid var(--glass-edge); cursor: pointer;
+  background: var(--glass); -webkit-backdrop-filter: blur(22px); backdrop-filter: blur(22px); box-shadow: var(--shadow-sm);
+  color: var(--ink); font: 650 13px var(--font);
+}
+.j-explore { height: 40px; padding: 0 14px 0 11px; border-radius: 999px; }
+.j-explore .icon { width: 18px; height: 18px; }
+.j-explore:hover, .j-icon-btn:hover { background: #fff; }
+html.is-exploring .j-explore { background: var(--ink); color: #fff; border-color: transparent; }
+html.is-exploring .j-explore:hover { background: #20263a; }
+.j-zoom { display: grid; gap: 4px; }
+.j-zoom[hidden] { display: none; }
+.j-icon-btn { width: 40px; height: 40px; border-radius: 999px; }
+.j-attribution { position: fixed; z-index: 9; right: 22px; bottom: 2px; margin: 0; font-size: 10.5px; color: var(--ink-3); }
+.j-attribution a { color: inherit; }
+
+/* ── Loading & intro ─────────────────────────────────────────────────────── */
+.j-boot { position: fixed; inset: 0; z-index: 20; display: grid; place-content: center; justify-items: center; gap: 12px; color: var(--ink-3); font-weight: 550; pointer-events: none; transition: opacity 0.6s; }
+.j-boot p { margin: 0; }
+.j-boot-mark { width: 34px; height: 34px; border-radius: 50%; border: 3px solid rgba(132, 224, 36, 0.25); border-top-color: var(--lime-deep); animation: j-spin 0.9s linear infinite; }
+html.is-ready .j-boot { opacity: 0; }
+html.has-error .j-boot-mark { animation: none; border-color: #e5646e; }
+@keyframes j-spin { to { transform: rotate(360deg); } }
+.j-topbar, .j-progress, .j-controls, .j-story { transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+html:not(.is-ready) .j-topbar, html:not(.is-ready) .j-progress, html:not(.is-ready) .j-controls { opacity: 0; transform: translateY(-8px); }
+html:not(.is-ready) .j-story { opacity: 0; transform: translateX(-16px); }
+html:not(.is-ready) .j-progress { transform: translateX(-50%) translateY(8px); }
+
+/* ── Mobile: cards at the bottom, map above ──────────────────────────────── */
+/* Short laptop screens: a tighter card, so a whole stop fits without scrolling */
+@media (min-width: 768px) and (max-height: 860px) {
+  .j-step { padding: 84px 0 96px; gap: 20px; }
+  .j-card { padding: 20px 24px 18px; }
+  .j-title { font-size: 32px; }
+  .j-text { font-size: 15px; line-height: 1.5; }
+  .j-roles { margin-top: 30px; }
+  .j-stats { margin-top: 14px; }
+  .j-card-foot { margin-top: 12px; }
+}
+
+@media (max-width: 1279px) {
+  .j-stop-text small { display: none; }
+  .j-leg { width: 24px; }
+}
+
+@media (max-width: 767px) {
+  :root { --story-w: 100%; }
+  .j-topbar { top: 10px; left: 10px; right: 10px; height: 52px; }
+  .j-nav a:not(.j-nav-cta) { display: none; }
+  body.journey-page::after {
+    inset: auto 0 0 0; width: auto; height: 60vh;
+    background: linear-gradient(0deg, rgba(242, 244, 247, 0.85) 0%, rgba(242, 244, 247, 0.5) 50%, rgba(242, 244, 247, 0) 100%);
+  }
+  .j-story { width: 100%; max-width: 580px; padding: 0 10px; }
+  .j-step { min-height: 100svh; justify-content: flex-end; gap: 14px; padding: 0 0 40px; }
+  .j-hero { margin-bottom: 20px; padding-bottom: 18px; }
+  .j-hero .j-name { font-size: 30px; }
+  .j-intro { display: none; }
+  .j-roles:not(.is-progression) { display: none; }
+  .j-card-foot { margin-top: 12px; min-height: 40px; }
+  .j-place small { display: none; }
+  .j-roles { margin-top: 12px; }
+  .j-stack { gap: 12px; }
+  .j-cases { padding: 14px 18px 2px; }
+  .j-case { padding: 12px 0; }
+  .j-case-title { font-size: 18px; font-weight: 600; }
+  .j-case-meta { margin-top: 6px; }
+  .j-case-go { width: 34px; height: 34px; }
+  .j-marker-card { padding: 9px 16px 9px 9px; }
+  .j-marker-text strong { font-size: 12.5px; }
+  .j-marker-text small { font-size: 11px; }
+  .j-marker-icon { width: 26px; height: 26px; }
+  /* the closing card sits low like the others, so the whole route stays visible above it */
+  .j-step.j-outro { min-height: 110svh; padding-bottom: 40px; }
+  .j-name { font-size: 28px; }
+  .j-role { margin-top: 6px; font-size: 15px; }
+  .j-card { padding: 18px 18px 16px; }
+  .j-title { font-size: 28px; }
+  .j-card::before { border-radius: 16px; }
+  .j-text { font-size: 15px; }
+  .j-stats { padding: 12px 0; }
+  .j-stat { padding: 0 9px; }
+  .j-stat dd { font-size: 14.5px; min-height: 34px; }
+  .j-stat.is-number dd { font-size: 27px; }
+  .j-progress { top: 72px; bottom: auto; left: 50%; padding: 8px 10px; }
+  .j-stop { gap: 7px; padding: 3px 8px; }
+  .j-leg { width: 14px; }
+  .j-stop-dot { width: 22px; height: 22px; font-size: 11px; }
+  .j-stop-text small { display: none; }
+  .j-stop-text b { font-size: 12px; }
+  .j-controls { bottom: auto; top: 128px; right: 10px; }
+  .j-explore span { display: none; }
+  .j-explore { width: 40px; padding: 0; }
+  .j-attribution { right: 12px; }
+}
+
+@media (max-width: 767px) {
+  .j-controls { display: none; }
+  /* the role chips repeat the stats ("1 → 5", "Senior → Lead"): phones keep the map in view instead */
+  .j-roles { display: none; }
+}
+/* the narrowest phones keep only the current stop's name */
+@media (max-width: 374px) {
+  .j-stop:not(.is-active) .j-stop-text { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* tags use IBM Plex Mono */

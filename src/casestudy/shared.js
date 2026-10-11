@@ -1,0 +1,18 @@
+import { h, frag } from '../util/dom.js';
+import { ICONS } from '../ui/icons.js';
+import { isPlaceholder, contactTarget, contactAttrs } from '../util/contact.js';
+
+export const LOGO = '<svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="16" fill="#0E1220"/><g transform="translate(16 15.5) scale(0.7) translate(-16.4 -15.5)"><path d="M27.9707 25.2833L18.1852 3.97022L18.1755 3.95166C18.0114 3.61519 17.7561 3.33154 17.4388 3.13298C17.1214 2.93441 16.7547 2.82889 16.3804 2.82843C16.006 2.82797 15.6391 2.93258 15.3212 3.13037C15.0034 3.32816 14.7475 3.61118 14.5825 3.94724C14.5788 3.95314 14.5755 3.95935 14.5728 3.9658L4.79174 25.2833C4.60923 25.6553 4.54858 26.0753 4.61839 26.4837C4.68821 26.8921 4.88494 27.2682 5.18065 27.5584L5.20716 27.5849C5.5082 27.8814 5.89654 28.0733 6.31492 28.1324C6.73329 28.1914 7.15957 28.1145 7.53089 27.9129L7.55388 27.9005L16.3786 22.9366L25.2033 27.9005L25.2262 27.9129C25.5981 28.1097 26.0225 28.1843 26.4392 28.126C26.8559 28.0676 27.2435 27.8794 27.547 27.588C27.8506 27.2967 28.0544 26.917 28.1297 26.5031C28.205 26.0891 28.1478 25.662 27.9663 25.2824L27.9707 25.2833ZM16.8709 20.9169C16.7214 20.8329 16.5527 20.7888 16.3812 20.7888C16.2097 20.7888 16.0411 20.8329 15.8915 20.9169L6.59663 26.146L6.60635 26.1256L16.3812 4.81786L26.157 26.123L26.1658 26.1424L16.8709 20.9169Z" fill="#fff" stroke="#fff" stroke-width="0.75" stroke-linejoin="round"/></g></svg>';
+
+/** The way back sits top left (as in Storyline), the brand beside it, Contact on the right. */
+export function renderTopbar(person, { root }) {
+  const contact = contactTarget(person);
+  const name = person.name && !isPlaceholder(person.name) ? person.name : 'Portfolio';
+  document.getElementById('topbar').append(
+    h('div.cs-topbar-left',
+      h('a.cs-brand', { href: root }, h('span.cs-brand-mark', { html: LOGO }), h('span.cs-brand-name', name))),
+    h('nav.cs-nav', { 'aria-label': 'Site' },
+      h('a', { href: `${root}case-studies/` }, 'Case studies'),
+      h('a.cs-nav-cta', contactAttrs(contact, `${root}#contact`), 'Contact', contact?.external ? frag(ICONS.arrowUpRight) : null)));
+}
+

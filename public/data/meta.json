@@ -1,0 +1,82 @@
+{
+  "name": "Central Eindhoven, NL",
+  "origin": [
+    5.48,
+    51.438
+  ],
+  "focus": [
+    5.47872,
+    51.43939
+  ],
+  "projection": {
+    "type": "equirectangular (build-time only)",
+    "note": "Files are WGS84 (lon, lat). Local metres x = (lon - lon0) * kx, y = (lat - lat0) * ky are used for build-time maths.",
+    "radius": 6378137,
+    "kx": 69392.24418745036,
+    "ky": 111319.49079327357
+  },
+  "core": {
+    "halfSize": 400,
+    "bounds": [
+      5.4742357,
+      51.4344067,
+      5.4857643,
+      51.4415933
+    ]
+  },
+  "fade": {
+    "start": 460,
+    "end": 600,
+    "norm": "superellipse p=4"
+  },
+  "bounds": [
+    5.4710653,
+    51.4324304,
+    5.4889347,
+    51.4435696
+  ],
+  "sun": {
+    "azimuth": 210,
+    "elevation": 48
+  },
+  "lighting": {
+    "image": "lighting.png",
+    "size": 2048,
+    "coordinates": [
+      [
+        5.4710653,
+        51.4435696
+      ],
+      [
+        5.4889347,
+        51.4435696
+      ],
+      [
+        5.4889347,
+        51.4324304
+      ],
+      [
+        5.4710653,
+        51.4324304
+      ]
+    ]
+  },
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL 1.0 — https://opendatacommons.org/licenses/odbl/",
+  "source": "OpenStreetMap via the Overpass API",
+  "osmBase": "2026-10-10T19:49:41Z",
+  "generatedAt": "2026-10-10T19:51:34.989Z",
+  "heightSources": {
+    "height": 13,
+    "levels": 1021,
+    "estimate": 930
+  },
+  "counts": {
+    "buildings": 1964,
+    "roads": 1467,
+    "rail": 0,
+    "water": 21,
+    "green": 362,
+    "trees": 265
+  }
+}

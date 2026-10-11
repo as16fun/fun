@@ -1,0 +1,14 @@
+Querying https://overpass-api.de/api/interpreter (attempt 1/5) for bbox 43.296378,13.445399,43.304822,13.457001 …
+  ✔ 3122 elements (OSM base 2026-10-09T15:34:41Z)
+Baking shadows, contact shading and edge fade …
+✔ Wrote buildings.geojson 303 KB, roads.geojson 262 KB, rail.geojson 0 KB, water.geojson 2 KB, green.geojson 77 KB, trees.geojson 159 KB, lighting.png 1107 KB
+  counts: {
+  buildings: 772,
+  roads: 935,
+  rail: 0,
+  water: 6,
+  green: 146,
+  trees: 1010
+} 
+  building heights: { height: 14, levels: 160, estimate: 598 }
+exit 0
